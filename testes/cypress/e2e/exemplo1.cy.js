@@ -25,7 +25,6 @@ describe('Criando cenário de teste para o site globalsqa', () => {
 
   })
 
-
   it('Caso de teste: Realizando login com sucesso', () => {
     const info = criarUsuario()
     cy.get('#username').type(info[0])
@@ -34,7 +33,24 @@ describe('Criando cenário de teste para o site globalsqa', () => {
     cy.get('h1.ng-binding').should('contain.text', info[0])
   })
 
+  it.skip("Caso de teste: Realizando login com falha (senha incorreta)", () => {
+    const { user } = criarUsuario();
+    realizarLogin(user, "senha incorreta");
+    cy.get(".ng-binding").should(
+      "contain.text",
+      "Username or password is incorrect"
+    );
+  });
 
+  it.skip("Caso de teste: Realizando login com falha (usuário incorreto)", () => {
+    const { pass } = criarUsuario();
+    realizarLogin("usuario incorreto", pass);
+
+    cy.get(".ng-binding").should(
+      "contain.text",
+      "Username or password is incorrect"
+    );
+  });
 })
 
 function criarUsuario(){
@@ -56,4 +72,20 @@ function criarUsuario(){
   cy.get('.ng-binding').should('contain.text', 'Registration successful')
 
   return userInfo
+}
+
+function realizarLogin(user, pass) {
+  const currentPath = cy.url();
+  if (
+    currentPath !==
+    "https://globalsqa.com/angularJs-protractor/registration-login-example/#/login"
+  ) {
+    cy.visit(
+      "https://globalsqa.com/angularJs-protractor/registration-login-example/#/login"
+    );
+  }
+  if (user !== "") cy.get("#username").type(user);
+  if (pass !== "") cy.get("#password").type(pass);
+
+  if (user !== "" && pass !== "") cy.get(".btn-primary").click();
 }
