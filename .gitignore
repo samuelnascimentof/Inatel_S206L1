@@ -26,5 +26,6 @@ replay_pid*
 node_modules/
 target/
 reports/
+screenshots/
 package-lock.json
 yarn.lock
