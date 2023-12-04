@@ -1,0 +1,12 @@
+1 - Foi desenvolvida uma única suíte de testes que abrange diferentes cenários relacionados à API de piadas do Chuck Norris.
+
+2 - São automatizados, pois utilizam a ferramenta Karate e executam automáticamente.
+
+3 - Se encontram no meio da pirâmide, pois são considerados testes de serviço.
+
+4 - Os testes são funcionais, pois verificam o comportamento funcional da API.
+
+5 - Não, pois são focados apenas em testar os retornos de uma API. Os testes end-to-end são focados em testar o fluxo completo de uma aplicação.
+
+6 - Para que os testes desenvolvidos funcionem em modo regressão, é necessário que sejam executados sempre que haja uma alteração na API.
+
